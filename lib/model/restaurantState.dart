@@ -31,14 +31,11 @@ class RestaurantState {
     ]);
   }
   RestaurantState update({RestaurantState state, List<RestaurantState> list}) {
-    state.checked = checked;
-
+    list[state.id].checked = !state.checked;
     for (int i = 0; i < list.length; i++) {
       if (state.id == i) {
-        list[i].name = '123';
-        print('${list[i].name}');
-        print('${list[i].checked}');
-        return RestaurantState(id: 1, name: '123123');
+        list[i].name += '${list[i].checked}';
+        return RestaurantState(list: list);
       } else {}
     }
   }

@@ -18,8 +18,6 @@ class ListPage extends StatelessWidget {
         ),
         body: Center(child:
             BlocBuilder<ListBloc, RestaurantState>(builder: (context, state) {
-          print('${state.list}');
-
           return ListView.builder(
               padding: const EdgeInsets.all(8),
               itemCount: state.list.length,
@@ -39,6 +37,8 @@ Container List(
           Container(
               width: MediaQuery.of(context).size.width * 0.7,
               child: Text('${restaurantData.name}')),
+
+          // check버튼으로 바꾸기
           IconButton(
             icon: const Icon(Icons.add),
             tooltip: 'Increase volume by 10',
@@ -50,7 +50,10 @@ Container List(
           IconButton(
             icon: const Icon(Icons.delete),
             tooltip: 'Increase volume by 10',
-            onPressed: () {},
+            onPressed: () {
+              _listBloc.add(ListRemove(
+                  state: restaurantData, list: _listBloc.state.list));
+            },
           )
         ],
       ));

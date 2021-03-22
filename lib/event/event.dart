@@ -10,9 +10,10 @@ class ListCheck extends ListEvent {
   RestaurantState state;
   List<RestaurantState> list;
   ListCheck({this.state, this.list});
+}
 
-  @override
-  String toString() {
-    return ('$state');
-  }
+class ListRemove extends ListEvent {
+  RestaurantState state;
+  List<RestaurantState> list;
+  ListRemove({this.state, this.list});
 }
