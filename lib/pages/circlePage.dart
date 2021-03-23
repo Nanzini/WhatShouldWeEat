@@ -50,17 +50,17 @@ class CirclePage extends StatelessWidget {
                           PieSeries<RestaurantState, String>(
                               dataSource: restaurantData,
                               xValueMapper: (RestaurantState data, _) =>
-                                  data.name,
+                                  (data.checked == false) ? '' : data.name,
                               // checked된 거 갯수 data.id에 넣기
                               yValueMapper: (RestaurantState data, _) =>
-                                  data.portion,
+                                  (data.checked == false) ? 0 : data.portion,
                               dataLabelMapper: (RestaurantState data, _) =>
-                                  data.name,
+                                  (data.checked == false) ? '' : data.name,
 
                               // Corner style of doughnut segment
                               // cornerStyle: CornerStyle.bothCurve,
                               dataLabelSettings: DataLabelSettings(
-                                  // labelPosition: ChartDataLabelPosition.outside,
+                                  labelPosition: ChartDataLabelPosition.inside,
                                   isVisible: true,
                                   // Renders background rectangle and fills it with series color
                                   useSeriesColor: true)),

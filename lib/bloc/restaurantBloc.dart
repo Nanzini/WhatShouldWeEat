@@ -12,19 +12,26 @@ class ListBloc extends Bloc<ListEvent, RestaurantState> {
   @override
   Stream<RestaurantState> mapEventToState(ListEvent event) async* {
     if (event is ListCheck) {
-      yield* _mapAddToState(event.state, event.list);
+      yield* _mapCheckToState(event.state, event.list);
     } else if (event is ListRemove) {
       yield* _mapRemoveToState(event.state, event.list);
+    } else if (event is ListUpdate) {
+      yield* _mapUpdateToState(event.state, event.list);
     }
   }
 
-  Stream<RestaurantState> _mapAddToState(
+  Stream<RestaurantState> _mapCheckToState(
       RestaurantState state, List<RestaurantState> list) async* {
-    yield state.update(state: state, list: list);
+    yield state.check(state: state, list: list);
   }
 
   Stream<RestaurantState> _mapRemoveToState(
       RestaurantState state, List<RestaurantState> list) async* {
-    // yield state.remove(state: state, list: list);
+    yield state.remove(state: state, list: list);
+  }
+
+  Stream<RestaurantState> _mapUpdateToState(
+      RestaurantState state, List<RestaurantState> list) async* {
+    yield state.update(state: state, list: list);
   }
 }

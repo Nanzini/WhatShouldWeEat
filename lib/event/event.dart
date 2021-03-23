@@ -17,3 +17,9 @@ class ListRemove extends ListEvent {
   List<RestaurantState> list;
   ListRemove({this.state, this.list});
 }
+
+class ListUpdate extends ListEvent {
+  RestaurantState state;
+  List<RestaurantState> list;
+  ListUpdate({this.state, this.list});
+}

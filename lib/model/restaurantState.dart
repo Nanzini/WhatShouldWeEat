@@ -13,34 +13,47 @@ class RestaurantState {
     this.checked = checked ?? true;
   }
 
-  factory RestaurantState.empty() {
-    return RestaurantState(list: [
-      RestaurantState(id: 0, name: '까사미아W'),
-      RestaurantState(id: 1, name: '소담'),
-      RestaurantState(id: 2, name: '버거킹'),
-      RestaurantState(id: 3, name: 'KFC'),
-      RestaurantState(id: 4, name: '취쓰부'),
-      RestaurantState(id: 5, name: '윤가네'),
-      RestaurantState(id: 6, name: '킹콩부대'),
-      RestaurantState(id: 7, name: '밥도둑'),
-      RestaurantState(id: 8, name: '고릴라김밥'),
-      RestaurantState(id: 9, name: '더족발'),
-      RestaurantState(id: 10, name: '명동할매'),
-      RestaurantState(id: 11, name: '굴향'),
-      RestaurantState(id: 12, name: '육전면'),
-    ]);
-  }
-  RestaurantState update({RestaurantState state, List<RestaurantState> list}) {
+  // factory RestaurantState.empty() {
+  //   return RestaurantState(list: [
+  //     RestaurantState(id: 0, name: '까사미아W'),
+  //     RestaurantState(id: 1, name: '소담'),
+  //     RestaurantState(id: 2, name: '버거킹'),
+  //     RestaurantState(id: 3, name: 'KFC'),
+  //     RestaurantState(id: 4, name: '취쓰부'),
+  //     RestaurantState(id: 5, name: '윤가네'),
+  //     RestaurantState(id: 6, name: '킹콩부대'),
+  //     RestaurantState(id: 7, name: '밥도둑'),
+  //     RestaurantState(id: 8, name: '고릴라김밥'),
+  //     RestaurantState(id: 9, name: '더족발'),
+  //     RestaurantState(id: 10, name: '명동할매'),
+  //     RestaurantState(id: 11, name: '굴향'),
+  //     RestaurantState(id: 12, name: '육전면'),
+  //   ]);
+  // }
+
+  RestaurantState check({RestaurantState state, List<RestaurantState> list}) {
     list[state.id].checked = !state.checked;
-    for (int i = 0; i < list.length; i++) {
-      if (state.id == i) {
-        list[i].name += '${list[i].checked}';
-        return RestaurantState(list: list);
-      } else {}
-    }
+
+    return RestaurantState(list: list);
   }
 
-  void state(String name) {}
+  RestaurantState update({RestaurantState state, List<RestaurantState> list}) {
+    print('이전 ${list[state.id].name} ${list[state.id].portion}');
+    // 다이얼로그에서 데이터받ㄷ아야함
+    list[state.id].name = state.name;
+    list[state.id].portion = state.portion;
+    print('이후 ${list[state.id].name} ${list[state.id].portion}');
+    return RestaurantState(list: list);
+  }
+
+  RestaurantState remove({RestaurantState state, List<RestaurantState> list}) {
+    print('${list[state.id].name}');
+    list.remove(list[state.id]);
+    for (int i = 0; i < list.length; i++) {
+      list[i].id = i;
+    }
+    return RestaurantState(list: list);
+  }
 }
 
 final List<RestaurantState> restaurantData = [

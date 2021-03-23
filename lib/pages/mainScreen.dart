@@ -9,6 +9,11 @@ import 'package:flutter_application_1/pages/listPage.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainScreen extends StatelessWidget {
+  /* GET다제! list:getlocalstorage하기.
+     여기 rstate가 다음 페이지로 데이터 넘겨주는 역할한다. 
+    mainscreen.dart에서 데이터 작업이 끝나야해 
+    rstate : RestuarantState.list = rstdata들어가잇네. 
+    */
   CircleState state = CircleState(0, 0);
   RestaurantState rstate = RestaurantState(list: restaurantData);
 
@@ -30,6 +35,7 @@ class MainScreen extends StatelessWidget {
                   builder: (_) => BlocProvider(
                       create: (BuildContext context) => ListBloc(rstate),
                       child: ListPage())))
+              // listpage로 넘어간 블럭은 rstate기반으로 데이터생성됨
             },
           ),
           ElevatedButton(
