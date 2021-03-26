@@ -23,3 +23,9 @@ class ListUpdate extends ListEvent {
   List<RestaurantState> list;
   ListUpdate({this.state, this.list});
 }
+
+class ListInit extends ListEvent {
+  RestaurantState state;
+  List<RestaurantState> list;
+  ListInit({this.state, this.list});
+}

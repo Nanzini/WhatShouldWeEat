@@ -37,7 +37,7 @@ Container List(
       child: Row(
         children: [
           Container(
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: MediaQuery.of(context).size.width * 0.58,
               child: Text('${restaurantData.name}')),
 
           // check버튼으로 바꾸기
@@ -81,18 +81,20 @@ _displayDialog(
           title: Text('식당 수정'),
           content: Container(
               width: MediaQuery.of(context).size.width / 5,
-              height: MediaQuery.of(context).size.width / 5,
+              height: MediaQuery.of(context).size.width / 4,
               child: Column(
                 children: [
                   TextField(
+                    autofocus: true,
                     controller: dialogName,
                     textInputAction: TextInputAction.go,
-                    keyboardType: TextInputType.numberWithOptions(),
+                    // keyboardType: TextInputType.text,
                     decoration: InputDecoration(hintText: '이름 : ${data.name}'),
                   ),
                   TextField(
+                    autofocus: true,
                     controller: dialogPortion,
-                    textInputAction: TextInputAction.go,
+                    // textInputAction: TextInputAction.go,
                     keyboardType: TextInputType.number,
                     inputFormatters: <TextInputFormatter>[
                       FilteringTextInputFormatter.digitsOnly

@@ -17,6 +17,8 @@ class ListBloc extends Bloc<ListEvent, RestaurantState> {
       yield* _mapRemoveToState(event.state, event.list);
     } else if (event is ListUpdate) {
       yield* _mapUpdateToState(event.state, event.list);
+    } else if (event is ListInit) {
+      yield* _mapInitToState(event.state, event.list);
     }
   }
 
@@ -33,5 +35,10 @@ class ListBloc extends Bloc<ListEvent, RestaurantState> {
   Stream<RestaurantState> _mapUpdateToState(
       RestaurantState state, List<RestaurantState> list) async* {
     yield state.update(state: state, list: list);
+  }
+
+  Stream<RestaurantState> _mapInitToState(
+      RestaurantState state, List<RestaurantState> list) async* {
+    yield RestaurantState.init(list);
   }
 }
