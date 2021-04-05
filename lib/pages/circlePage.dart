@@ -9,7 +9,18 @@ import '../model/circleState.dart';
 import '../event/event.dart';
 import '../model/restaurantState.dart';
 
-class CirclePage extends StatelessWidget {
+class CirclePage extends StatefulWidget {
+  @override
+  _CirclePageState createState() => _CirclePageState();
+}
+
+class _CirclePageState extends State<CirclePage> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    context.read<CircleBloc>().add(CircleEvent.circleInit);
+  }
+
   @override
   Widget build(BuildContext context) {
     CircleBloc _circleBloc = BlocProvider.of<CircleBloc>(context);
@@ -34,6 +45,7 @@ class CirclePage extends StatelessWidget {
               height: MediaQuery.of(context).size.width * 0.21,
             ),
             BlocBuilder<CircleBloc, CircleState>(builder: (context, state) {
+              // print(state.list);
               return Container(
                 margin: EdgeInsets.all(0),
                 width: MediaQuery.of(context).size.width * 0.9 * 5,
@@ -48,7 +60,7 @@ class CirclePage extends StatelessWidget {
                             // tooltipBehavior: TooltipBehavior(enable: true),
                             series: <CircularSeries>[
                           PieSeries<RestaurantState, String>(
-                              dataSource: restaurantData,
+                              dataSource: state.list,
                               xValueMapper: (RestaurantState data, _) =>
                                   (data.checked == false) ? '' : data.name,
                               // checked된 거 갯수 data.id에 넣기
@@ -70,50 +82,11 @@ class CirclePage extends StatelessWidget {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.casino),
+          backgroundColor: Colors.pink,
           onPressed: () {
             _circleBloc.add(CircleEvent.btn_rotate);
           },
         ));
-  }
-}
-
-class CircularParticleScreen extends StatelessWidget {
-  const CircularParticleScreen({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Center(
-      child: Container(
-        child: Center(
-          child: CircularParticle(
-            key: UniqueKey(),
-            awayRadius: 80,
-            numberOfParticles: 200,
-            speedOfParticles: 1,
-            height: screenHeight,
-            width: screenWidth,
-            onTapAnimation: true,
-            particleColor: Colors.white.withAlpha(150),
-            awayAnimationDuration: Duration(milliseconds: 600),
-            maxParticleSize: 8,
-            isRandSize: true,
-            isRandomColor: true,
-            randColorList: [
-              Colors.red.withAlpha(210),
-              Colors.white.withAlpha(210),
-              Colors.yellow.withAlpha(210),
-              Colors.green.withAlpha(210)
-            ],
-            awayAnimationCurve: Curves.easeInOutBack,
-            enableHover: true,
-            hoverColor: Colors.white,
-            hoverRadius: 90,
-            connectDots: false, //not recommended
-          ),
-        ),
-      ),
-    );
   }
 }
