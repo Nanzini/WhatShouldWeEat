@@ -1,16 +1,16 @@
-# flutter_application_1
+# 오늘뭐먹지?
 
-A new Flutter project.
+메뉴를 고르는 데 힘들거나 괴로우신 분들을 위해 만들었습니다.
 
-## Getting Started
+돌림판 형식으로 n바퀴 돌아간 후 멈춥니다.
 
-This project is a starting point for a Flutter application.
+state관리는 BLoC로 구현하였으며 코드에 미숙한 부분이 있으니 주의하세요
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+# 제작기간
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2021.03.01 ~ 2021.03.27 (Final Intern Project)
+
+# 데모영상
+
+**데모영상이 너무 큰 관계로 돌림판.avi를 참조해주시면 고맙겠습니다.**
